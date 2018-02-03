@@ -4,6 +4,10 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,7 +25,33 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static android.widget.Toast.*;
+
 public class MainActivity extends AppCompatActivity {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId())
+        {
+            case R.id.help:
+                Toast toast= makeText(getApplicationContext(), "Enter a place to know about its weather conditions", LENGTH_LONG);
+                toast.setGravity(Gravity.FILL_HORIZONTAL | Gravity.BOTTOM, 0, 150);
+                toast.show();
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     EditText editText;
     TextView textView;
@@ -77,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Could not find weather", Toast.LENGTH_LONG ).show();
+                makeText(getApplicationContext(), "Could not find weather", LENGTH_LONG ).show();
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Could not find weather", Toast.LENGTH_LONG ).show();
+                makeText(getApplicationContext(), "Could not find weather", LENGTH_LONG ).show();
 
             }
 
@@ -90,244 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             try {
 
@@ -354,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Could not find weather", Toast.LENGTH_LONG ).show();
+                makeText(getApplicationContext(), "Could not find weather", LENGTH_LONG ).show();
 
             }
 
